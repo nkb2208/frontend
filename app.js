@@ -465,3 +465,73 @@ function renderSurveyCard(item) {
 
 
 
+
+// ==========================================
+// WARDROBE LOGIC
+// ==========================================
+let wardrobeFiles = [];
+
+window.previewWardrobe = function(input) {
+    if (input.files && input.files.length > 0) {
+        const previewBox = document.getElementById('wardrobePreview');
+        previewBox.innerHTML = '';
+        wardrobeFiles = Array.from(input.files).slice(0, 10); // max 10
+
+        wardrobeFiles.forEach((file) => {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const img = document.createElement('img');
+                img.src = e.target.result;
+                img.style.maxHeight = '100px';
+                img.style.borderRadius = '8px';
+                img.style.objectFit = 'cover';
+                previewBox.appendChild(img);
+            };
+            reader.readAsDataURL(file);
+        });
+    }
+};
+
+window.analyzeWardrobe = async function() {
+    if (wardrobeFiles.length === 0) {
+        alert('Please upload some clothing items first.');
+        return;
+    }
+
+    const resultsArea = document.getElementById('wardrobeResults');
+    if (resultsArea) {
+        resultsArea.style.display = 'block';
+        resultsArea.innerHTML = `
+            <div style="text-align: center; padding: 50px 0;">
+              <div class="spinner"></div>
+              <h3 style="margin-top: 20px;">LUMI is matching your clothes...</h3>
+            </div>
+        `;
+        resultsArea.scrollIntoView({behavior: 'smooth', block: 'start'});
+    }
+
+    // Since we don't have a wardrobe endpoint yet, we'll just mock it or point it to the outfit endpoint with one image for now.
+    // For a real implementation, you'd send a multi-part form with all images to a new /api/analyze/wardrobe endpoint.
+    setTimeout(() => {
+        if (resultsArea) {
+            resultsArea.innerHTML = `
+                <div class="section-title">
+                    <div><div class="eyebrow">Results</div><h2>Your Matches</h2></div>
+                </div>
+                <div class="grid grid-3">
+                    <div class="card" style="text-align:center; padding:30px;">
+                        <h3>Casual Weekend</h3>
+                        <p>We paired your graphic tee with your straight jeans.</p>
+                        <span class="tag">Casual</span>
+                    </div>
+                    <div class="card" style="text-align:center; padding:30px;">
+                        <h3>Smart Casual</h3>
+                        <p>Your button-up shirt goes perfectly with the dark trousers.</p>
+                        <span class="tag">Office</span>
+                    </div>
+                </div>
+                <p style="text-align:center; margin-top:20px; color:#666;">(Note: This is a preview demo. AI Wardrobe generation requires backend multimodal support.)</p>
+            `;
+        }
+    }, 2500);
+};
