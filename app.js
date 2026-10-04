@@ -510,28 +510,29 @@ window.analyzeWardrobe = async function() {
         resultsArea.scrollIntoView({behavior: 'smooth', block: 'start'});
     }
 
-    // Since we don't have a wardrobe endpoint yet, we'll just mock it or point it to the outfit endpoint with one image for now.
-    // For a real implementation, you'd send a multi-part form with all images to a new /api/analyze/wardrobe endpoint.
+    // Fetch from data.js
     setTimeout(() => {
         if (resultsArea) {
-            resultsArea.innerHTML = `
+            let html = `
                 <div class="section-title">
-                    <div><div class="eyebrow">Results</div><h2>Your Matches</h2></div>
+                    <div><div class="eyebrow">Results</div><h2>Your Mix & Match Outfits</h2></div>
                 </div>
                 <div class="grid grid-3">
-                    <div class="card" style="text-align:center; padding:30px;">
-                        <h3>Casual Weekend</h3>
-                        <p>We paired your graphic tee with your straight jeans.</p>
-                        <span class="tag">Casual</span>
-                    </div>
-                    <div class="card" style="text-align:center; padding:30px;">
-                        <h3>Smart Casual</h3>
-                        <p>Your button-up shirt goes perfectly with the dark trousers.</p>
-                        <span class="tag">Office</span>
-                    </div>
-                </div>
-                <p style="text-align:center; margin-top:20px; color:#666;">(Note: This is a preview demo. AI Wardrobe generation requires backend multimodal support.)</p>
             `;
+            
+            if (typeof CONTENT_DATABASE !== 'undefined') {
+                const outfits = CONTENT_DATABASE.filter(i => i.category === 'outfit');
+                // pick 3 random outfits
+                const shuffled = outfits.sort(() => 0.5 - Math.random());
+                const selected = shuffled.slice(0, 3);
+                
+                html += selected.map(renderSurveyCard).join('');
+            } else {
+                html += `<p>Error: Could not load outfit database.</p>`;
+            }
+            
+            html += `</div><p style="text-align:center; margin-top:20px; color:#666;">(Note: This is a simulated wardrobe generation using your outfit database.)</p>`;
+            resultsArea.innerHTML = html;
         }
     }, 2500);
 };
