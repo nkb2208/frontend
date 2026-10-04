@@ -1,4 +1,4 @@
-﻿<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>LUMI Skincare</title><link rel="stylesheet" href="styles.css"><script src="app.js"></script>
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>LUMI Skincare</title><link rel="stylesheet" href="styles.css"><script src="app.js"></script>
 <script>
 let skincareState = { skinType: "", budget: "" };
 function selectSkincarePill(btn, type) {
@@ -26,7 +26,7 @@ async function generateSkincareRoutine(resultId) {
             formData.append("image", fileInput.files[0]);
         }
         
-        const res = await fetch("http://localhost:3000/api/recommend/skincare", {
+        const res = await fetch(" + BACKEND_URL + /api/recommend/skincare", {
             method: "POST",
             body: formData
         });
@@ -55,8 +55,14 @@ async function generateSkincareRoutine(resultId) {
         resultsArea.innerHTML = html;
         resultsArea.scrollIntoView({behavior: "smooth", block: "start"});
     } catch (e) {
-        alert(e.message);
-        resultsArea.innerHTML = "";
+        console.error(e);
+        let userMsg = "Không thể kết nối đến máy chủ. Vui lòng thử lại sau.";
+        if (e.name === 'SyntaxError') userMsg = "Máy chủ trả về dữ liệu không hợp lệ. Vui lòng thử lại sau.";
+        else if (e.message.includes("429")) userMsg = "Hệ thống đang quá tải, vui lòng chờ một lát rồi thử lại.";
+        else if (e.message) userMsg = e.message.replace(/AIza[a-zA-Z0-9_\\-]+/g, "[HIDDEN]");
+        
+        resultsArea.innerHTML = `<p style="text-align:center; color:red; padding: 20px;">Lỗi: ${userMsg}</p>`;
+        alert(`LUMI gặp sự cố: ${userMsg}`);
     }
 }
 </script></head><body>

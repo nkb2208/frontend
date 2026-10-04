@@ -1,4 +1,4 @@
-﻿<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>LUMI Outfit</title><link rel="stylesheet" href="styles.css"><script src="data.js"></script><script src="app.js"></script></head><body>
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>LUMI Outfit</title><link rel="stylesheet" href="styles.css"><script src="data.js"></script><script src="app.js"></script></head><body>
 <nav class="nav"><a class="logo" href="index.html">LUMI</a><div class="navlinks"><a href="index.html">Home</a><a href="hair.html">Hair</a><a href="face.html">Face</a><a class="active" href="outfit.html">Outfit</a><a href="body.html">Body</a><a href="explore.html">Explore</a></div></nav>
 <main class="container"><div class="eyebrow">Outfit Studio</div><h1>Discover your perfect outfit</h1><p>Give LUMI a view of your body and style. Upload a full-body photo so the AI can build outfit recommendations.</p>
 <div class="grid grid-2">
@@ -82,7 +82,7 @@
           const formData = new FormData();
           wardrobeFiles.forEach(file => formData.append('images', file));
           
-          const res = await fetch('http://localhost:3000/api/analyze/wardrobe', {
+          const res = await fetch(${BACKEND_URL}/api/analyze/wardrobe, {
               method: 'POST',
               body: formData
           });
@@ -102,8 +102,14 @@
           resultsArea.innerHTML = html;
           resultsArea.scrollIntoView({behavior: "smooth", block: "start"});
       } catch(e) {
-          alert(e.message);
-          resultsArea.innerHTML = '';
+          console.error(e);
+          let userMsg = "Không thể kết nối đến máy chủ. Vui lòng thử lại sau.";
+          if (e.name === 'SyntaxError') userMsg = "Máy chủ trả về dữ liệu không hợp lệ. Vui lòng thử lại sau.";
+          else if (e.message.includes("429")) userMsg = "Hệ thống đang quá tải, vui lòng chờ một lát rồi thử lại.";
+          else if (e.message) userMsg = e.message.replace(/AIza[a-zA-Z0-9_\\-]+/g, "[HIDDEN]");
+          
+          resultsArea.innerHTML = `<p style="text-align:center; color:red; padding: 20px;">Lỗi: ${userMsg}</p>`;
+          alert(`LUMI gặp sự cố: ${userMsg}`);
       }
   }
 

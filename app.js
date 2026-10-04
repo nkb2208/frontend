@@ -1,4 +1,27 @@
-const BACKEND_URL = 'http://localhost:3000';
+﻿const CONFIG = {
+    API_BASE_URL:
+        window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
+            ? "http://localhost:3000"
+            : "https://backend-production-b088.up.railway.app"
+};
+const BACKEND_URL = CONFIG.API_BASE_URL;
+
+// Health check for Railway connection
+async function checkBackendHealth() {
+    try {
+        const res = await fetch("${BACKEND_URL}/api/health");
+        if (res.ok) {
+            console.log('✅ LUMI Backend connection successful:', await res.json());
+            return true;
+        }
+        console.error('❌ LUMI Backend responded with error:', res.status);
+        return false;
+    } catch (e) {
+        console.error('❌ LUMI Backend connection failed. Is Railway awake?', e);
+        return false;
+    }
+}
+checkBackendHealth();
 
 let selectedFile = null;
 
@@ -165,10 +188,21 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('lumi_last_results', JSON.stringify(data.recommendations));
 
         } catch (error) {
-            if (resultsArea) {
-                resultsArea.innerHTML = `<p style="text-align:center; color:red;">Error: ${error.message}</p>`;
+            console.error(error);
+            let userMsg = "KhÃ´ng thá»ƒ káº¿t ná»‘i Ä‘áº¿n mÃ¡y chá»§. Vui lÃ²ng thá»­ láº¡i sau.";
+            if (error.name === 'SyntaxError') {
+                userMsg = "MÃ¡y chá»§ tráº£ vá» dá»¯ liá»‡u khÃ´ng há»£p lá»‡. Vui lÃ²ng thá»­ láº¡i sau.";
+            } else if (error.message.includes("429")) {
+                userMsg = "Há»‡ thá»‘ng Ä‘ang quÃ¡ táº£i, vui lÃ²ng chá» má»™t lÃ¡t rá»“i thá»­ láº¡i.";
+            } else if (error.message) {
+                // Ensure no secrets are leaked in error message
+                userMsg = error.message.replace(/AIza[a-zA-Z0-9_\\-]+/g, "[HIDDEN]");
             }
-            alert(`LUMI could not analyze this image. Error: ${error.message}`);
+            
+            if (resultsArea) {
+                resultsArea.innerHTML = `<p style="text-align:center; color:red; padding: 20px;">Lá»—i: ${userMsg}</p>`;
+            }
+            alert(`LUMI gáº·p sá»± cá»‘: ${userMsg}`);
         }
     };
 });
@@ -283,7 +317,7 @@ function submitSurvey(category, resultContainerId) {
     const choices = userState[category];
     const keys = Object.keys(choices);
     
-    // YÃªu cáº§u chá»n Ã­t nháº¥t 1
+    // YÃƒÆ’Ã‚Âªu cÃƒÂ¡Ã‚ÂºÃ‚Â§u chÃƒÂ¡Ã‚Â»Ã‚Ân ÃƒÆ’Ã‚Â­t nhÃƒÂ¡Ã‚ÂºÃ‚Â¥t 1
     if (keys.length === 0) {
         alert("Please answer at least one question!");
         return;
@@ -304,7 +338,7 @@ function submitSurvey(category, resultContainerId) {
         return;
     }
 
-    // PhÃ¢n loáº¡i káº¿t quáº£
+    // PhÃƒÆ’Ã‚Â¢n loÃƒÂ¡Ã‚ÂºÃ‚Â¡i kÃƒÂ¡Ã‚ÂºÃ‚Â¿t quÃƒÂ¡Ã‚ÂºÃ‚Â£
     const exactMatches = recommendations.filter(r => r.score === r.totalCriteria);
     const partialMatches = recommendations.filter(r => r.score < r.totalCriteria);
 
@@ -374,4 +408,7 @@ function renderSurveyCard(item) {
       </a>
     `;
 }
+
+
+
 
