@@ -59,6 +59,12 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Auto-restore AI results if they exist (for hair.html, face.html, outfit.html)
     const restoreAIResults = () => {
+        // Only restore if coming from detail/tutorial pages
+        const ref = document.referrer.toLowerCase();
+        if (!ref.includes('detail.html') && !ref.includes('tutorial.html')) {
+            return; // don't restore if fresh load
+        }
+
         try {
             const currentPath = window.location.pathname.toLowerCase();
             let activeCategory = null;
@@ -75,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (savedData[activeCategory] && savedData[activeCategory].length > 0) {
                         const resultsArea = document.getElementById(resultsId);
                         if (resultsArea) {
-                            let html = `<div class="section-title"><div><div class="eyebrow">Perfect Match</div><h2>LUMI's Suggestions</h2></div></div>`;
+                            let html = `<div class="section-title"><div><div class="eyebrow">AI suggestions</div><h2>Styles for your profile</h2></div></div>`;
                             html += `<div class="grid grid-3">`;
                             html += savedData[activeCategory].map(item => typeof renderSurveyCard === 'function' ? renderSurveyCard(item) : '').join('');
                             html += `</div>`;
@@ -137,7 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     // For index.html - Render distinct sections
                     let html = `
                         <div class="section-title">
-                            <div><div class="eyebrow">Styles for you</div><h2>LUMI's Suggestions</h2></div>
+                            <div><div class="eyebrow">AI suggestions</div><h2>Styles for your profile</h2></div>
                         </div>
                     `;
                     

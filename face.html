@@ -26,19 +26,7 @@
 </div>
 <section id="faceResults" class="result-area" style="display: none;"></section>
 
-<section id="defaultGallery" class="result-area">
-  <div class="section-title">
-    <div><div class="eyebrow">Face Gallery</div><h2>All Makeup Styles</h2></div>
-  </div>
-  <div class="grid grid-3" id="defaultFaceGrid"></div>
-</section>
+
 </main>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    if (typeof getAllContent !== 'undefined') {
-      const data = getAllContent().filter(item => item.category === 'face');
-      document.getElementById('defaultFaceGrid').innerHTML = data.map(renderSurveyCard).join('');
-    }
-  });
-</script>
+
 </body></html>

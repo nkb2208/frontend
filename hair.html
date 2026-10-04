@@ -26,20 +26,8 @@
 </div>
 <section id="hairResults" class="result-area" style="display: none;"></section>
 
-<section id="defaultGallery" class="result-area">
-  <div class="section-title">
-    <div><div class="eyebrow">Hair Gallery</div><h2>All Hairstyles</h2></div>
-  </div>
-  <div class="grid grid-3" id="defaultHairGrid"></div>
-</section>
+
 </main>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    if (typeof getAllContent !== 'undefined') {
-      const data = getAllContent().filter(item => item.category === 'hair');
-      document.getElementById('defaultHairGrid').innerHTML = data.map(renderSurveyCard).join('');
-    }
-  });
-</script>
+
 </body></html>
 

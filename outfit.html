@@ -46,78 +46,7 @@
 </div>
 <section id="wardrobeResults" class="result-area" style="display: none;"></section>
 
-<section id="defaultGallery" class="result-area">
-  <div class="section-title">
-    <div><div class="eyebrow">Outfit Gallery</div><h2>All Outfits</h2></div>
-  </div>
-  <div class="grid grid-3" id="defaultOutfitGrid"></div>
-</section>
+
 </main>
-<script>
-  let wardrobeFiles = [];
-  function previewWardrobe(input) {
-      const previewArea = document.getElementById('wardrobePreview');
-      previewArea.innerHTML = '';
-      wardrobeFiles = Array.from(input.files).slice(0, 10); // limit 10
-      
-      wardrobeFiles.forEach(file => {
-          const reader = new FileReader();
-          reader.onload = (e) => {
-              previewArea.innerHTML += `<div style="width: 80px; height: 80px; border-radius: 8px; overflow: hidden; border: 1px solid #ddd;"><img src="${e.target.result}" style="width: 100%; height: 100%; object-fit: cover;"></div>`;
-          };
-          reader.readAsDataURL(file);
-      });
-  }
 
-  async function analyzeWardrobe() {
-      if (wardrobeFiles.length === 0) {
-          alert('Please upload some clothing items first.');
-          return;
-      }
-      const resultsArea = document.getElementById('wardrobeResults');
-      resultsArea.style.display = 'block';
-      resultsArea.innerHTML = '<div style="text-align: center; padding: 50px 0;"><div class="spinner"></div><h3>LUMI is styling your wardrobe...</h3></div>';
-      
-      try {
-          const formData = new FormData();
-          wardrobeFiles.forEach(file => formData.append('images', file));
-          
-          const res = await fetch(${BACKEND_URL}/api/analyze/wardrobe, {
-              method: 'POST',
-              body: formData
-          });
-          
-          if (!res.ok) throw new Error('API Error');
-          const data = await res.json();
-          
-          let html = '<div class="grid grid-2">';
-          data.outfits.forEach(outfit => {
-              html += `<div class="panel"><h3>${outfit.name}</h3><p>${outfit.description}</p><br><b>Items used:</b><ul>`;
-              outfit.items.forEach(item => {
-                  html += `<li>${item}</li>`;
-              });
-              html += `</ul></div>`;
-          });
-          html += '</div>';
-          resultsArea.innerHTML = html;
-          resultsArea.scrollIntoView({behavior: "smooth", block: "start"});
-      } catch(e) {
-          console.error(e);
-          let userMsg = "Không thể kết nối đến máy chủ. Vui lòng thử lại sau.";
-          if (e.name === 'SyntaxError') userMsg = "Máy chủ trả về dữ liệu không hợp lệ. Vui lòng thử lại sau.";
-          else if (e.message.includes("429")) userMsg = "Hệ thống đang quá tải, vui lòng chờ một lát rồi thử lại.";
-          else if (e.message) userMsg = e.message.replace(/AIza[a-zA-Z0-9_\\-]+/g, "[HIDDEN]");
-          
-          resultsArea.innerHTML = `<p style="text-align:center; color:red; padding: 20px;">Lỗi: ${userMsg}</p>`;
-          alert(`LUMI gặp sự cố: ${userMsg}`);
-      }
-  }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    if (typeof getAllContent !== 'undefined') {
-      const data = getAllContent().filter(item => item.category === 'outfit');
-      document.getElementById('defaultOutfitGrid').innerHTML = data.map(renderSurveyCard).join('');
-    }
-  });
-</script>
 </body></html>
