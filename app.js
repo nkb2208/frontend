@@ -1,8 +1,5 @@
 ﻿const CONFIG = {
-    API_BASE_URL:
-        window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
-            ? "http://localhost:3000"
-            : "https://backend-production-b088.up.railway.app"
+    API_BASE_URL: "https://backend-production-b088.up.railway.app"
 };
 const BACKEND_URL = CONFIG.API_BASE_URL;
 
@@ -408,6 +405,7 @@ function renderSurveyCard(item) {
       </a>
     `;
 }
+
 
 
 
