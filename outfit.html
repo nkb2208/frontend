@@ -1,0 +1,117 @@
+﻿<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>LUMI Outfit</title><link rel="stylesheet" href="styles.css"><script src="data.js"></script><script src="app.js"></script></head><body>
+<nav class="nav"><a class="logo" href="index.html">LUMI</a><div class="navlinks"><a href="index.html">Home</a><a href="hair.html">Hair</a><a href="face.html">Face</a><a class="active" href="outfit.html">Outfit</a><a href="body.html">Body</a><a href="explore.html">Explore</a></div></nav>
+<main class="container"><div class="eyebrow">Outfit Studio</div><h1>Discover your perfect outfit</h1><p>Give LUMI a view of your body and style. Upload a full-body photo so the AI can build outfit recommendations.</p>
+<div class="grid grid-2">
+  <div class="panel">
+    <h2>1. Your outfit/body</h2>
+    <div class="upload" style="cursor: pointer;" onclick="document.getElementById('outfitPhoto').click()">
+      <div style="font-size:35px">📸</div>
+      <strong>Upload a full-body photo</strong><br>
+      <span class="small">Head to toe view works best.</span><br>
+      <input id="outfitPhoto" type="file" accept="image/jpeg, image/png, image/webp" data-preview-id="outfitPreview" style="display: none;" onchange="previewFile(this, 'outfitPreview')">
+      <div id="outfitPreview" class="preview" style="display: none;"></div>
+    </div>
+    <div class="btn-row">
+      <button class="btn secondary" onclick="document.getElementById('outfitPhoto').click()">Take photo</button>
+    </div>
+  </div>
+  <div class="panel">
+    <h2>2. Analyze</h2>
+    <p>LUMI considers body proportions, current style, and overall vibe to suggest the perfect outfits.</p>
+    <div class="notice">Our Gemini AI will analyze your photo in real-time.</div>
+    <div class="btn-row">
+      <button class="btn" onclick="analyzePageImage('outfit', 'outfitResults')">Analyze my outfit ✨</button>
+    </div>
+  </div>
+</div>
+<section id="outfitResults" class="result-area" style="display: none;"></section>
+
+<div class="section-title" style="margin-top: 50px;">
+  <div><div class="eyebrow">Your Closet</div><h2>Wardrobe Mix & Match</h2></div>
+</div>
+<p>Upload up to 10 photos of your clothes. LUMI AI will scan them and generate the best outfit combinations for you.</p>
+
+<div class="panel">
+  <h2>Add to Wardrobe</h2>
+  <div class="upload" style="cursor: pointer;" onclick="document.getElementById('wardrobePhotos').click()">
+    <div style="font-size:35px">📸</div>
+    <strong>Upload clothing items</strong><br>
+    <span class="small">You can select multiple files at once. Max 10 items.</span><br>
+    <input id="wardrobePhotos" type="file" accept="image/jpeg, image/png, image/webp" multiple style="display: none;" onchange="previewWardrobe(this)">
+    <div id="wardrobePreview" style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px;"></div>
+  </div>
+  <div class="btn-row">
+    <button class="btn" onclick="analyzeWardrobe()">Mix & Match My Clothes ✨</button>
+  </div>
+</div>
+<section id="wardrobeResults" class="result-area" style="display: none;"></section>
+
+<section id="defaultGallery" class="result-area">
+  <div class="section-title">
+    <div><div class="eyebrow">Outfit Gallery</div><h2>All Outfits</h2></div>
+  </div>
+  <div class="grid grid-3" id="defaultOutfitGrid"></div>
+</section>
+</main>
+<script>
+  let wardrobeFiles = [];
+  function previewWardrobe(input) {
+      const previewArea = document.getElementById('wardrobePreview');
+      previewArea.innerHTML = '';
+      wardrobeFiles = Array.from(input.files).slice(0, 10); // limit 10
+      
+      wardrobeFiles.forEach(file => {
+          const reader = new FileReader();
+          reader.onload = (e) => {
+              previewArea.innerHTML += `<div style="width: 80px; height: 80px; border-radius: 8px; overflow: hidden; border: 1px solid #ddd;"><img src="${e.target.result}" style="width: 100%; height: 100%; object-fit: cover;"></div>`;
+          };
+          reader.readAsDataURL(file);
+      });
+  }
+
+  async function analyzeWardrobe() {
+      if (wardrobeFiles.length === 0) {
+          alert('Please upload some clothing items first.');
+          return;
+      }
+      const resultsArea = document.getElementById('wardrobeResults');
+      resultsArea.style.display = 'block';
+      resultsArea.innerHTML = '<div style="text-align: center; padding: 50px 0;"><div class="spinner"></div><h3>LUMI is styling your wardrobe...</h3></div>';
+      
+      try {
+          const formData = new FormData();
+          wardrobeFiles.forEach(file => formData.append('images', file));
+          
+          const res = await fetch('http://localhost:3000/api/analyze/wardrobe', {
+              method: 'POST',
+              body: formData
+          });
+          
+          if (!res.ok) throw new Error('API Error');
+          const data = await res.json();
+          
+          let html = '<div class="grid grid-2">';
+          data.outfits.forEach(outfit => {
+              html += `<div class="panel"><h3>${outfit.name}</h3><p>${outfit.description}</p><br><b>Items used:</b><ul>`;
+              outfit.items.forEach(item => {
+                  html += `<li>${item}</li>`;
+              });
+              html += `</ul></div>`;
+          });
+          html += '</div>';
+          resultsArea.innerHTML = html;
+          resultsArea.scrollIntoView({behavior: "smooth", block: "start"});
+      } catch(e) {
+          alert(e.message);
+          resultsArea.innerHTML = '';
+      }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof getAllContent !== 'undefined') {
+      const data = getAllContent().filter(item => item.category === 'outfit');
+      document.getElementById('defaultOutfitGrid').innerHTML = data.map(renderSurveyCard).join('');
+    }
+  });
+</script>
+</body></html>

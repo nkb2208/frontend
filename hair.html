@@ -1,0 +1,45 @@
+﻿<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>LUMI Hair</title><link rel="stylesheet" href="styles.css"><script src="data.js"></script><script src="app.js"></script></head><body>
+<nav class="nav"><a class="logo" href="index.html">LUMI</a><div class="navlinks"><a href="index.html">Home</a><a class="active" href="hair.html">Hair</a><a href="face.html">Face</a><a href="outfit.html">Outfit</a><a href="body.html">Body</a><a href="explore.html">Explore</a></div></nav>
+<main class="container"><div class="eyebrow">Hair Studio</div><h1>Which hairstyle fits you best?</h1><p>Give LUMI a clear view of your hair. Upload a photo so the AI can build personalized hairstyle recommendations.</p>
+<div class="grid grid-2">
+  <div class="panel">
+    <h2>1. Your hair</h2>
+    <div class="upload" style="cursor: pointer;" onclick="document.getElementById('hairPhoto').click()">
+      <div style="font-size:35px">📸</div>
+      <strong>Upload a hair photo</strong><br>
+      <span class="small">Front or side view works best.</span><br>
+      <input id="hairPhoto" type="file" accept="image/jpeg, image/png, image/webp" data-preview-id="hairPreview" style="display: none;" onchange="previewFile(this, 'hairPreview')">
+      <div id="hairPreview" class="preview" style="display: none;"></div>
+    </div>
+    <div class="btn-row">
+      <button class="btn secondary" onclick="document.getElementById('hairPhoto').click()">Take photo</button>
+    </div>
+  </div>
+  <div class="panel">
+    <h2>2. Analyze</h2>
+    <p>LUMI considers visible hair length, texture, volume and overall face framing to suggest the perfect match.</p>
+    <div class="notice">Our Gemini AI will analyze your photo in real-time.</div>
+    <div class="btn-row">
+      <button class="btn" onclick="analyzePageImage('hair', 'hairResults')">Analyze my hair ✨</button>
+    </div>
+  </div>
+</div>
+<section id="hairResults" class="result-area" style="display: none;"></section>
+
+<section id="defaultGallery" class="result-area">
+  <div class="section-title">
+    <div><div class="eyebrow">Hair Gallery</div><h2>All Hairstyles</h2></div>
+  </div>
+  <div class="grid grid-3" id="defaultHairGrid"></div>
+</section>
+</main>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof getAllContent !== 'undefined') {
+      const data = getAllContent().filter(item => item.category === 'hair');
+      document.getElementById('defaultHairGrid').innerHTML = data.map(renderSurveyCard).join('');
+    }
+  });
+</script>
+</body></html>
+

@@ -1,0 +1,72 @@
+﻿<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>LUMI Skincare</title><link rel="stylesheet" href="styles.css"><script src="app.js"></script>
+<script>
+let skincareState = { skinType: "", budget: "" };
+function selectSkincarePill(btn, type) {
+    const parent = btn.parentElement;
+    parent.querySelectorAll(".pill").forEach(b => b.classList.remove("selected"));
+    btn.classList.add("selected");
+    skincareState[type] = btn.innerText;
+}
+async function generateSkincareRoutine(resultId) {
+    if (!skincareState.skinType || !skincareState.budget) {
+        alert("Please select both skin type and budget.");
+        return;
+    }
+    
+    const resultsArea = document.getElementById(resultId);
+    resultsArea.style.display = "block";
+    resultsArea.innerHTML = "<div style='text-align: center; padding: 50px 0;'><div class='spinner'></div><h3>Building your routine...</h3></div>";
+    
+    try {
+        const formData = new FormData();
+        formData.append("skinType", skincareState.skinType);
+        formData.append("budget", skincareState.budget);
+        const fileInput = document.getElementById("skinPhoto");
+        if (fileInput.files.length > 0) {
+            formData.append("image", fileInput.files[0]);
+        }
+        
+        const res = await fetch("http://localhost:3000/api/recommend/skincare", {
+            method: "POST",
+            body: formData
+        });
+        
+        if (!res.ok) throw new Error("API Error");
+        
+        const data = await res.json();
+        
+        let html = "<div class='section-title'><div><div class='eyebrow'>Routine</div><h2>Your Custom Plan</h2></div></div><div class='grid grid-2'>";
+        
+        // Morning
+        html += "<div class='panel'><h3>☀️ Morning</h3><div class='steps'>";
+        data.routine.morning.forEach(item => {
+            html += "<div class='step'><div><b>" + item.stepName + " - " + item.name + "</b><p>" + item.whyItSuitsUser + "</p><img src='" + item.imageUrl + "' style='width:100px; border-radius:8px; margin-top:10px;'><br><a href='" + item.purchaseLink + "' target='_blank' class='btn secondary' style='margin-top:10px; padding:5px 15px; font-size:12px;'>Buy on Shopee</a></div></div>";
+        });
+        html += "</div></div>";
+        
+        // Night
+        html += "<div class='panel'><h3>🌙 Evening</h3><div class='steps'>";
+        data.routine.night.forEach(item => {
+            html += "<div class='step'><div><b>" + item.stepName + " - " + item.name + "</b><p>" + item.whyItSuitsUser + "</p><img src='" + item.imageUrl + "' style='width:100px; border-radius:8px; margin-top:10px;'><br><a href='" + item.purchaseLink + "' target='_blank' class='btn secondary' style='margin-top:10px; padding:5px 15px; font-size:12px;'>Buy on Shopee</a></div></div>";
+        });
+        html += "</div></div>";
+        
+        html += "</div>";
+        resultsArea.innerHTML = html;
+        resultsArea.scrollIntoView({behavior: "smooth", block: "start"});
+    } catch (e) {
+        alert(e.message);
+        resultsArea.innerHTML = "";
+    }
+}
+</script></head><body>
+<nav class="nav"><a class="logo" href="index.html">LUMI</a><div class="navlinks"><a href="face.html">â† Face</a><a href="hair.html">Hair</a><a href="outfit.html">Outfit</a><a href="body.html">Body</a><a href="explore.html">Explore</a></div></nav>
+<main class="container"><div class="eyebrow">Skincare Studio</div><h1>Build a routine that fits you.</h1><p>Choose your skin type and budget. Uploading a photo can be used as an additional input in a future AI version.</p>
+<div class="grid grid-2"><div class="panel"><h2>Skin type</h2><div class="pills"><button class="pill" data-group="skin" onclick="selectSkincarePill(this,'skinType')" >Oily</button><button class="pill" data-group="skin" onclick="selectSkincarePill(this,'skinType')" >Combination</button><button class="pill" data-group="skin" onclick="selectSkincarePill(this,'skinType')" >Dry</button><button class="pill" data-group="skin" onclick="selectSkincarePill(this,'skinType')" >Combination-dry</button></div><h3 style="margin-top:28px">Budget</h3><div class="pills"><button class="pill" data-group="budget" onclick="selectSkincarePill(this,'budget')" >Student</button><button class="pill" data-group="budget" onclick="selectSkincarePill(this,'budget')" >Mid-range</button><button class="pill" data-group="budget" onclick="selectSkincarePill(this,'budget')" >Premium</button></div></div>
+<div class="panel"><h2>Optional skin photo</h2><div class="upload"><div style="font-size:35px">📸</div><strong>Upload a clear skin photo</strong><br><label for="skinPhoto">Choose photo</label><input id="skinPhoto" type="file" accept="image/*" onchange="previewFile(this,'skinPreview')"><div id="skinPreview" class="preview"></div></div></div></div>
+<div class="notice" style="margin-top:18px">For persistent, painful, severe or rapidly changing skin problems, a dermatologist is more appropriate than an AI routine. This prototype does not diagnose medical conditions.</div>
+<div class="btn-row"><button class="btn" onclick="generateSkincareRoutine('skinResult')" >Build my routine ✨</button>
+<section id="skinResult" class="result-area"><div class="section-title"><div><div class="eyebrow">Routine</div><h2>Simple Clear & Glow Plan</h2></div></div>
+<div class="grid grid-2"><div class="panel"><h3>â˜€ Morning</h3><div class="steps"><div class="step"><div><b>Cleanser</b><p>Gentle cleanse without over-stripping.</p></div></div><div class="step"><div><b>Moisturizer</b><p>Use a lightweight layer appropriate for your skin type.</p></div></div><div class="step"><div><b>Sunscreen</b><p>Finish with broad-spectrum SPF.</p></div></div></div></div>
+<div class="panel"><h3>â˜¾ Evening</h3><div class="steps"><div class="step"><div><b>Cleanse</b><p>Remove makeup and sunscreen thoroughly.</p></div></div><div class="step"><div><b>Treatment</b><p>Choose one targeted active at a time if appropriate.</p></div></div><div class="step"><div><b>Moisturize</b><p>Support the skin barrier overnight.</p></div></div></div></div></div></section></main></body></html>
+
