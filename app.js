@@ -1,4 +1,4 @@
-﻿const CONFIG = {
+const CONFIG = {
     API_BASE_URL:
         window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
             ? "http://localhost:3000"
@@ -212,8 +212,8 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function getTutorial(id) {
-    if (typeof getAllContent !== 'undefined') {
-        return getAllContent().find(item => item.id === id);
+    if (typeof CONTENT_DATABASE !== 'undefined' || typeof getAllContent !== 'undefined') {
+        return (typeof CONTENT_DATABASE !== 'undefined' ? CONTENT_DATABASE : getAllContent()).find(item => item.id === id);
     }
     return null;
 }
@@ -452,7 +452,7 @@ function renderSurveyCard(item) {
     const descText = item.whyItSuitsUser || item.description || "";
 
     return `
-      <a class="result card" href="tutorial.html?id=${item.id}&category=${item.category}" onclick="localStorage.setItem('lumi_selected_tutorial_id', '${item.id}'); localStorage.setItem('lumi_selected_tutorial_cat', '${item.category}');">
+      <a class="result card" href="tutorial.html?id=${item.id}&category=${item.category || String(item.id).split('_')[0]}" onclick="localStorage.setItem('lumi_selected_tutorial_id', '${item.id}'); localStorage.setItem('lumi_selected_tutorial_cat', '${item.category || String(item.id).split('_')[0]}');">
         <div class="look-img" style="background: url('${item.imageUrl || item.primaryImage || item.fallbackImage}') center/cover;" onerror="this.innerHTML='<div style=\\'padding:20px;text-align:center\\'>Image loading error</div>'; this.style.background='#eee'">
         </div>
         <h3 style="margin-top:15px">${item.name || item.title}</h3>
@@ -521,7 +521,9 @@ window.analyzeWardrobe = async function() {
             `;
             
             if (typeof CONTENT_DATABASE !== 'undefined') {
-                const outfits = CONTENT_DATABASE.filter(i => i.category === 'outfit');
+                const outfits = CONTENT_DATABASE
+                    .filter(i => i.id && i.id.startsWith('outfit_'))
+                    .map(i => ({ ...i, category: 'outfit' }));
                 // pick 3 random outfits
                 const shuffled = outfits.sort(() => 0.5 - Math.random());
                 const selected = shuffled.slice(0, 3);
