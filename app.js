@@ -288,14 +288,63 @@ function initTutorial() {
     document.getElementById('t-steps').innerHTML = stepsHtml;
     
     const videoBox = document.getElementById('t-video');
-    if (data.tutorial.videoId) {
-        videoBox.innerHTML = `
-          <iframe src="https://www.youtube.com/embed/${data.tutorial.videoId}" width="100%" height="100%" style="min-height:330px; border:none;" frameborder="0" allowfullscreen></iframe>
-        `;
-        document.getElementById('t-source-btn').href = `https://www.youtube.com/watch?v=${data.tutorial.videoId}`;
+    const sectionTitle = document.querySelector('.section-title');
+    
+    // Handle Video visibility
+    if (cat === 'outfit') {
+        if (videoBox) videoBox.style.display = 'none';
+        if (sectionTitle) sectionTitle.style.display = 'none';
+        
+        // Hide the video parent panel to avoid empty gap
+        const videoParent = videoBox ? videoBox.parentElement : null;
+        if (videoParent && videoParent.classList.contains('grid-2')) {
+            videoParent.style.gridTemplateColumns = '1fr'; // make steps full width
+        }
     } else {
-        videoBox.innerHTML = `<div style="padding:40px; text-align:center;">Video is being updated</div>`;
-        document.getElementById('t-source-btn').style.display = 'none';
+        if (videoBox) {
+            videoBox.style.display = 'block';
+            if (sectionTitle) sectionTitle.style.display = 'block'; 
+            
+            if (data.tutorial.videoId) {
+                videoBox.innerHTML = `
+                  <iframe src="https://www.youtube.com/embed/${data.tutorial.videoId}" width="100%" height="100%" style="min-height:330px; border:none;" frameborder="0" allowfullscreen></iframe>
+                `;
+            } else {
+                videoBox.innerHTML = `<div style="padding:40px; text-align:center;">Video is being updated</div>`;
+            }
+        }
+        
+        const sourceBtn = document.getElementById('t-source-btn');
+        if (sourceBtn) {
+            if (data.tutorial.videoId) {
+                sourceBtn.href = `https://www.youtube.com/watch?v=${data.tutorial.videoId}`;
+                sourceBtn.style.display = 'inline-block';
+            } else {
+                sourceBtn.style.display = 'none';
+            }
+        }
+    }
+    
+    // Handle Products rendering
+    const productsPanel = document.getElementById('t-products-panel');
+    const productsContainer = document.getElementById('t-products');
+    
+    if (productsPanel && productsContainer) {
+        console.log('Rendering products for', cat, data.tutorial.products);
+        if (data.tutorial && data.tutorial.products && data.tutorial.products.length > 0) {
+            productsPanel.style.display = 'block';
+            productsContainer.innerHTML = data.tutorial.products.map(p => `
+                <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #eee; padding:15px 0;">
+                    <div style="display:flex; align-items:center; gap: 10px;">
+                        <span style="font-size:20px;">🛍️</span>
+                        <span style="font-weight:600; font-size:16px;">${p.name}</span>
+                    </div>
+                    <a href="${p.purchaseLink}" target="_blank" class="btn secondary" style="padding:8px 20px; font-size:14px; text-decoration:none;">Mua ngay ↗</a>
+                </div>
+            `).join('');
+        } else {
+            productsPanel.style.display = 'none';
+        }
     }
 }
 
