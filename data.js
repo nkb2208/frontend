@@ -249,6 +249,161 @@ const CONTENT_DATABASE = [
     }
   },
   {
+    "id": "hair_009",
+    "name": "Wispy Bangs",
+    "category": "hair",
+    "description": "Light, see-through bangs that gently frame the forehead without weighing down the face.",
+    "tags": [
+      "high forehead",
+      "v-line face",
+      "straight hair"
+    ],
+    "primaryImage": "https://i.pinimg.com/736x/dc/37/3f/dc373f1b95eac305133ad555c05a4ba2.jpg",
+    "fallbackImage": "https://i.pinimg.com/736x/dc/37/3f/dc373f1b95eac305133ad555c05a4ba2.jpg",
+    "tutorial": {
+      "steps": [
+        {
+          "title": "Section",
+          "desc": "Take a small triangular section at the front."
+        },
+        {
+          "title": "Cut",
+          "desc": "Cut vertically at eyebrow length for a soft edge."
+        },
+        {
+          "title": "Style",
+          "desc": "Use a small hair roller to give them a natural bounce."
+        }
+      ],
+      "videoId": "S91gEnXPULg",
+      "sourceName": "YouTube"
+    }
+  },
+  {
+    "id": "hair_010",
+    "name": "Sleek High Ponytail",
+    "category": "hair",
+    "description": "A tightly pulled, high ponytail for a chic and confident look.",
+    "tags": [
+      "round face",
+      "thick hair",
+      "long hair"
+    ],
+    "primaryImage": "https://i.pinimg.com/736x/88/f5/30/88f530d915ddeabcb638c24f0ff23705.jpg",
+    "fallbackImage": "https://i.pinimg.com/736x/88/f5/30/88f530d915ddeabcb638c24f0ff23705.jpg",
+    "tutorial": {
+      "steps": [
+        {
+          "title": "Gel",
+          "desc": "Apply styling gel to roots and brush hair upwards."
+        },
+        {
+          "title": "Tie",
+          "desc": "Secure tightly at the crown with a strong hair tie."
+        },
+        {
+          "title": "Wrap",
+          "desc": "Take a small piece of hair to wrap around the band and pin it."
+        }
+      ],
+      "videoId": "FOQPJxtgUkw",
+      "sourceName": "YouTube"
+    }
+  },
+  {
+    "id": "hair_011",
+    "name": "French Twist Bob",
+    "category": "hair",
+    "description": "A short, elegant updo perfect for short to medium hair.",
+    "tags": [
+      "short hair",
+      "v-line face",
+      "thin hair"
+    ],
+    "primaryImage": "https://i.pinimg.com/736x/e3/63/d7/e363d73f923fe063dd6d6f2f62cd6e7e.jpg",
+    "fallbackImage": "https://i.pinimg.com/736x/e3/63/d7/e363d73f923fe063dd6d6f2f62cd6e7e.jpg",
+    "tutorial": {
+      "steps": [
+        {
+          "title": "Gather",
+          "desc": "Gather hair at the nape of the neck."
+        },
+        {
+          "title": "Twist",
+          "desc": "Twist upwards and tuck the ends inside."
+        },
+        {
+          "title": "Pin",
+          "desc": "Secure with U-pins and leave a few strands loose."
+        }
+      ],
+      "videoId": "1c_gHonRtYI",
+      "sourceName": "YouTube"
+    }
+  },
+  {
+    "id": "hair_012",
+    "name": "Soft Shag Cut",
+    "category": "hair",
+    "description": "A modern, textured shag with choppy layers for an edgy vibe.",
+    "tags": [
+      "square face",
+      "thick hair",
+      "wavy hair"
+    ],
+    "primaryImage": "https://i.pinimg.com/1200x/90/29/cd/9029cda20f5b062f447024dcc43b7dc7.jpg",
+    "fallbackImage": "https://i.pinimg.com/1200x/90/29/cd/9029cda20f5b062f447024dcc43b7dc7.jpg",
+    "tutorial": {
+      "steps": [
+        {
+          "title": "Layer",
+          "desc": "Create multiple short layers starting from the cheekbones."
+        },
+        {
+          "title": "Texturize",
+          "desc": "Use texturizing shears for a shattered end effect."
+        },
+        {
+          "title": "Style",
+          "desc": "Apply a matte paste to accentuate the choppy layers."
+        }
+      ],
+      "videoId": "dF60AveAFs8",
+      "sourceName": "YouTube"
+    }
+  },
+  {
+    "id": "hair_013",
+    "name": "Mermaid Waves",
+    "category": "hair",
+    "description": "Deep, continuous S-waves for a glamorous, voluminous look.",
+    "tags": [
+      "long hair",
+      "thin hair",
+      "round face"
+    ],
+    "primaryImage": "https://i.pinimg.com/736x/b6/96/b2/b696b2d826ddfe38a7165cd382e0de6e.jpg",
+    "fallbackImage": "https://i.pinimg.com/736x/b6/96/b2/b696b2d826ddfe38a7165cd382e0de6e.jpg",
+    "tutorial": {
+      "steps": [
+        {
+          "title": "Prep",
+          "desc": "Apply a heat protectant and volume mousse."
+        },
+        {
+          "title": "Waver",
+          "desc": "Use a 3-barrel waver tool starting close to the roots."
+        },
+        {
+          "title": "Hold",
+          "desc": "Hold each section for 5 seconds, overlapping the last wave."
+        }
+      ],
+      "videoId": "a2ySvhm2qG8",
+      "sourceName": "YouTube"
+    }
+  },
+  {
     "id": "makeup_001",
     "name": "Soft Everyday Glow",
     "category": "makeup",
@@ -275,7 +430,7 @@ const CONTENT_DATABASE = [
           "desc": "Finish with a hydrating lip oil or sheer gloss."
         }
       ],
-      "videoId": "y46hvE9JAXo",
+      "videoId": "Hkr5hoZpQ_8",
       "sourceName": "YouTube",
       "products": [
         {
@@ -316,7 +471,7 @@ const CONTENT_DATABASE = [
           "desc": "Apply lip tint in the center of the lips and blend outwards."
         }
       ],
-      "videoId": "wE08NnJzC_8",
+      "videoId": "ze-xsMlI5I4",
       "sourceName": "YouTube",
       "products": [
         {
@@ -357,7 +512,7 @@ const CONTENT_DATABASE = [
           "desc": "Use a coral lipstick or tint to tie the look together."
         }
       ],
-      "videoId": "Zq1fFv0f2Y4",
+      "videoId": "IZ7xBvqiXsI",
       "sourceName": "YouTube",
       "products": [
         {
@@ -398,7 +553,7 @@ const CONTENT_DATABASE = [
           "desc": "Brush brows up with a clear brow gel for a laminated effect."
         }
       ],
-      "videoId": "oF0c5q_qC0c",
+      "videoId": "P3UJj3Dm7ao",
       "sourceName": "YouTube",
       "products": [
         {
@@ -439,7 +594,7 @@ const CONTENT_DATABASE = [
           "desc": "Apply volumizing mascara or individual falsies to the outer corners."
         }
       ],
-      "videoId": "1r_2-sV0g3Y",
+      "videoId": "G8hRmKDqJo4",
       "sourceName": "YouTube",
       "products": [
         {
@@ -480,7 +635,7 @@ const CONTENT_DATABASE = [
           "desc": "Create a soft cut crease using neutral brown shades and add a subtle shimmer on the lid."
         }
       ],
-      "videoId": "b5D3n4fV7yA",
+      "videoId": "A_SVwR4a8FU",
       "sourceName": "YouTube",
       "products": [
         {
@@ -521,7 +676,7 @@ const CONTENT_DATABASE = [
           "desc": "Use a brown lip liner with a nude lipstick."
         }
       ],
-      "videoId": "3GE20RX6Nw0",
+      "videoId": "1usDj5WGmbI",
       "sourceName": "YouTube",
       "products": [
         {
@@ -562,7 +717,7 @@ const CONTENT_DATABASE = [
           "desc": "Outline lips carefully with red liner, then fill in with a long-lasting matte red lipstick."
         }
       ],
-      "videoId": "dQw4w9WgXcQ",
+      "videoId": "aipwyIoE1Qc",
       "sourceName": "YouTube",
       "products": [
         {
@@ -572,6 +727,191 @@ const CONTENT_DATABASE = [
         {
           "name": "Son môi",
           "purchaseLink": "https://shopee.vn/search?keyword=son%20moi"
+        }
+      ]
+    }
+  },
+  {
+    "id": "makeup_009",
+    "name": "Igari Makeup (Drunk Blush)",
+    "category": "makeup",
+    "description": "A Japanese makeup style focusing on blush placed high on the cheeks and right under the eyes.",
+    "tags": [
+      "cute",
+      "blush",
+      "spring"
+    ],
+    "primaryImage": "https://i.pinimg.com/736x/46/e2/c6/46e2c61d7f47c3ecea04c5ce80058e16.jpg",
+    "fallbackImage": "https://i.pinimg.com/736x/46/e2/c6/46e2c61d7f47c3ecea04c5ce80058e16.jpg",
+    "tutorial": {
+      "steps": [
+        {
+          "title": "Base",
+          "desc": "Create a flawless, dewy base."
+        },
+        {
+          "title": "Blush",
+          "desc": "Apply pink or peach blush right under the eyes and across the nose bridge."
+        },
+        {
+          "title": "Lips",
+          "desc": "Finish with a sheer, glossy lip tint."
+        }
+      ],
+      "videoId": "LT_nol0NOfc",
+      "sourceName": "YouTube",
+      "products": [
+        {
+          "name": "Cream Blush",
+          "purchaseLink": "https://shopee.vn/search?keyword=cream%20blush"
+        }
+      ]
+    }
+  },
+  {
+    "id": "makeup_010",
+    "name": "Smokey Siren Eyes",
+    "category": "makeup",
+    "description": "Elongated, dark, and sultry eye makeup to give a mysterious vibe.",
+    "tags": [
+      "evening",
+      "bold",
+      "siren"
+    ],
+    "primaryImage": "https://i.pinimg.com/736x/5c/49/68/5c496812dbcead069fefb059adac2030.jpg",
+    "fallbackImage": "https://i.pinimg.com/736x/5c/49/68/5c496812dbcead069fefb059adac2030.jpg",
+    "tutorial": {
+      "steps": [
+        {
+          "title": "Shadow",
+          "desc": "Apply dark brown shadow focusing on the outer V and elongating it."
+        },
+        {
+          "title": "Liner",
+          "desc": "Draw a sharp inner corner point and a stretched outer wing."
+        },
+        {
+          "title": "Lashes",
+          "desc": "Apply half-lashes at the outer corners to lift the eyes."
+        }
+      ],
+      "videoId": "CpW3ZDLc8ZE",
+      "sourceName": "YouTube",
+      "products": [
+        {
+          "name": "Eyeliner",
+          "purchaseLink": "https://shopee.vn/search?keyword=eyeliner"
+        }
+      ]
+    }
+  },
+  {
+    "id": "makeup_011",
+    "name": "Strawberry Makeup",
+    "category": "makeup",
+    "description": "Fresh, red-toned makeup with faux freckles and a glossy finish.",
+    "tags": [
+      "summer",
+      "fresh",
+      "freckles"
+    ],
+    "primaryImage": "https://i.pinimg.com/736x/4e/f7/8a/4ef78acdd52bce3d0f0e41ce48883dd3.jpg",
+    "fallbackImage": "https://i.pinimg.com/736x/4e/f7/8a/4ef78acdd52bce3d0f0e41ce48883dd3.jpg",
+    "tutorial": {
+      "steps": [
+        {
+          "title": "Blush",
+          "desc": "Generously apply red or deep pink cream blush on the cheeks and nose."
+        },
+        {
+          "title": "Freckles",
+          "desc": "Use a brown freckle pen to dot faux freckles over the blush."
+        },
+        {
+          "title": "Lips",
+          "desc": "Apply a shiny strawberry-toned lip gloss."
+        }
+      ],
+      "videoId": "74KK4YyMnJM",
+      "sourceName": "YouTube",
+      "products": [
+        {
+          "name": "Lip Gloss",
+          "purchaseLink": "https://shopee.vn/search?keyword=lip%20gloss"
+        }
+      ]
+    }
+  },
+  {
+    "id": "makeup_012",
+    "name": "Douyin Doll Makeup",
+    "category": "makeup",
+    "description": "Chinese internet-famous makeup focusing on manhua lashes and intense glitter.",
+    "tags": [
+      "douyin",
+      "glitter",
+      "doll"
+    ],
+    "primaryImage": "https://i.pinimg.com/736x/42/95/85/4295859a6667dd1c1a1344e062e0b5de.jpg",
+    "fallbackImage": "https://i.pinimg.com/736x/42/95/85/4295859a6667dd1c1a1344e062e0b5de.jpg",
+    "tutorial": {
+      "steps": [
+        {
+          "title": "Aegyo Sal",
+          "desc": "Highlight the under-eye fat and contour below it to make eyes appear larger."
+        },
+        {
+          "title": "Glitter",
+          "desc": "Apply chunky liquid glitter to the eyelids and inner corners."
+        },
+        {
+          "title": "Lashes",
+          "desc": "Attach spiked 'manhua' style false lashes."
+        }
+      ],
+      "videoId": "U6aOGAkFVZQ",
+      "sourceName": "YouTube",
+      "products": [
+        {
+          "name": "Liquid Glitter",
+          "purchaseLink": "https://shopee.vn/search?keyword=liquid%20glitter"
+        }
+      ]
+    }
+  },
+  {
+    "id": "makeup_013",
+    "name": "90s Grunge Glam",
+    "category": "makeup",
+    "description": "Matte skin, cool-toned brown lips, and smudged eyeliner for a vintage edgy look.",
+    "tags": [
+      "grunge",
+      "90s",
+      "edgy"
+    ],
+    "primaryImage": "https://i.pinimg.com/736x/58/db/34/58db34a90537f2b26f3e323f52caf534.jpg",
+    "fallbackImage": "https://i.pinimg.com/736x/58/db/34/58db34a90537f2b26f3e323f52caf534.jpg",
+    "tutorial": {
+      "steps": [
+        {
+          "title": "Base",
+          "desc": "Use a matte foundation and powder down the entire face."
+        },
+        {
+          "title": "Eyes",
+          "desc": "Smudge a black kohl pencil along the top and bottom lash lines."
+        },
+        {
+          "title": "Lips",
+          "desc": "Line lips with a dark brown pencil and fill with a matte taupe lipstick."
+        }
+      ],
+      "videoId": "dfopdzEBBOw",
+      "sourceName": "YouTube",
+      "products": [
+        {
+          "name": "Brown Lip Liner",
+          "purchaseLink": "https://shopee.vn/search?keyword=brown%20lip%20liner"
         }
       ]
     }
@@ -1044,15 +1384,610 @@ const CONTENT_DATABASE = [
         }
       ]
     }
+  },
+  {
+    "id": "outfit_009",
+    "name": "Y2K Cyberpunk",
+    "category": "outfit",
+    "description": "Futuristic 2000s fashion featuring metallic accents, parachute pants, and platform boots.",
+    "tags": [
+      "streetwear",
+      "y2k",
+      "edgy",
+      "hourglass"
+    ],
+    "primaryImage": "https://i.pinimg.com/736x/1a/b4/13/1ab4139b9aa53f071fbd051ba3133d92.jpg",
+    "fallbackImage": "https://i.pinimg.com/736x/1a/b4/13/1ab4139b9aa53f071fbd051ba3133d92.jpg",
+    "tutorial": {
+      "steps": [
+        {
+          "title": "Top",
+          "desc": "Wear a tight, metallic or mesh crop top."
+        },
+        {
+          "title": "Bottom",
+          "desc": "Pair with baggy parachute pants or a low-rise cargo skirt."
+        },
+        {
+          "title": "Accessories",
+          "desc": "Add chunky platform boots, a studded belt, and rimless sunglasses."
+        }
+      ],
+      "products": [
+        {
+          "name": "Top (Y2K Cyberpunk)",
+          "shopeeLink": "https://shopee.vn/search?keyword=Top%20Y2K%20Cyberpunk",
+          "tiktokLink": "https://shop.tiktok.com/view/product?keyword=Top%20Y2K%20Cyberpunk"
+        },
+        {
+          "name": "Bottom (Y2K Cyberpunk)",
+          "shopeeLink": "https://shopee.vn/search?keyword=Bottom%20Y2K%20Cyberpunk",
+          "tiktokLink": "https://shop.tiktok.com/view/product?keyword=Bottom%20Y2K%20Cyberpunk"
+        },
+        {
+          "name": "Accessories (Y2K Cyberpunk)",
+          "shopeeLink": "https://shopee.vn/search?keyword=Accessories%20Y2K%20Cyberpunk",
+          "tiktokLink": "https://shop.tiktok.com/view/product?keyword=Accessories%20Y2K%20Cyberpunk"
+        }
+      ]
+    }
+  },
+  {
+    "id": "outfit_010",
+    "name": "Academia Preppy",
+    "category": "outfit",
+    "description": "A smart, scholarly aesthetic with plaid skirts, sweater vests, and loafers.",
+    "tags": [
+      "preppy",
+      "autumn",
+      "pear",
+      "office"
+    ],
+    "primaryImage": "https://i.pinimg.com/1200x/f5/4c/b7/f54cb74bcb151c497139aea26ec00f58.jpg",
+    "fallbackImage": "https://i.pinimg.com/1200x/f5/4c/b7/f54cb74bcb151c497139aea26ec00f58.jpg",
+    "tutorial": {
+      "steps": [
+        {
+          "title": "Layering",
+          "desc": "Layer an oversized sweater vest over a crisp white button-down."
+        },
+        {
+          "title": "Bottom",
+          "desc": "Tuck into a pleated plaid mini or midi skirt."
+        },
+        {
+          "title": "Footwear",
+          "desc": "Complete with leather loafers and white frilly ankle socks."
+        }
+      ],
+      "products": [
+        {
+          "name": "Layering (Academia Preppy)",
+          "shopeeLink": "https://shopee.vn/search?keyword=Layering%20Academia%20Preppy",
+          "tiktokLink": "https://shop.tiktok.com/view/product?keyword=Layering%20Academia%20Preppy"
+        },
+        {
+          "name": "Bottom (Academia Preppy)",
+          "shopeeLink": "https://shopee.vn/search?keyword=Bottom%20Academia%20Preppy",
+          "tiktokLink": "https://shop.tiktok.com/view/product?keyword=Bottom%20Academia%20Preppy"
+        },
+        {
+          "name": "Footwear (Academia Preppy)",
+          "shopeeLink": "https://shopee.vn/search?keyword=Footwear%20Academia%20Preppy",
+          "tiktokLink": "https://shop.tiktok.com/view/product?keyword=Footwear%20Academia%20Preppy"
+        }
+      ]
+    }
+  },
+  {
+    "id": "outfit_011",
+    "name": "Cozy Knitwear Layers",
+    "category": "outfit",
+    "description": "Comfortable and chic layers of chunky knits and soft fabrics for cold weather.",
+    "tags": [
+      "winter",
+      "cozy",
+      "casual",
+      "apple"
+    ],
+    "primaryImage": "https://i.pinimg.com/736x/cd/6d/57/cd6d57762aced6996b98c53f65f8ea45.jpg",
+    "fallbackImage": "https://i.pinimg.com/736x/cd/6d/57/cd6d57762aced6996b98c53f65f8ea45.jpg",
+    "tutorial": {
+      "steps": [
+        {
+          "title": "Base",
+          "desc": "Start with a thermal turtleneck."
+        },
+        {
+          "title": "Outer",
+          "desc": "Layer an oversized chunky cardigan."
+        },
+        {
+          "title": "Bottom",
+          "desc": "Pair with straight-leg jeans and UGG boots."
+        }
+      ],
+      "products": [
+        {
+          "name": "Base (Cozy Knitwear Layers)",
+          "shopeeLink": "https://shopee.vn/search?keyword=Base%20Cozy%20Knitwear%20Layers",
+          "tiktokLink": "https://shop.tiktok.com/view/product?keyword=Base%20Cozy%20Knitwear%20Layers"
+        },
+        {
+          "name": "Outer (Cozy Knitwear Layers)",
+          "shopeeLink": "https://shopee.vn/search?keyword=Outer%20Cozy%20Knitwear%20Layers",
+          "tiktokLink": "https://shop.tiktok.com/view/product?keyword=Outer%20Cozy%20Knitwear%20Layers"
+        },
+        {
+          "name": "Bottom (Cozy Knitwear Layers)",
+          "shopeeLink": "https://shopee.vn/search?keyword=Bottom%20Cozy%20Knitwear%20Layers",
+          "tiktokLink": "https://shop.tiktok.com/view/product?keyword=Bottom%20Cozy%20Knitwear%20Layers"
+        }
+      ]
+    }
+  },
+  {
+    "id": "outfit_012",
+    "name": "Summer Linen Resort",
+    "category": "outfit",
+    "description": "Breathable and elegant linen sets perfect for a beach vacation or resort stay.",
+    "tags": [
+      "summer",
+      "travel",
+      "elegant",
+      "rectangle"
+    ],
+    "primaryImage": "https://i.pinimg.com/736x/45/12/e8/4512e84f6430e29e8362232a394e9863.jpg",
+    "fallbackImage": "https://i.pinimg.com/736x/45/12/e8/4512e84f6430e29e8362232a394e9863.jpg",
+    "tutorial": {
+      "steps": [
+        {
+          "title": "Set",
+          "desc": "Wear a matching beige linen button-down and wide-leg trousers."
+        },
+        {
+          "title": "Styling",
+          "desc": "Leave the top unbuttoned slightly and tuck in one side."
+        },
+        {
+          "title": "Accessories",
+          "desc": "Add a wide-brim straw hat and woven sandals."
+        }
+      ],
+      "products": [
+        {
+          "name": "Set (Summer Linen Resort)",
+          "shopeeLink": "https://shopee.vn/search?keyword=Set%20Summer%20Linen%20Resort",
+          "tiktokLink": "https://shop.tiktok.com/view/product?keyword=Set%20Summer%20Linen%20Resort"
+        },
+        {
+          "name": "Styling (Summer Linen Resort)",
+          "shopeeLink": "https://shopee.vn/search?keyword=Styling%20Summer%20Linen%20Resort",
+          "tiktokLink": "https://shop.tiktok.com/view/product?keyword=Styling%20Summer%20Linen%20Resort"
+        },
+        {
+          "name": "Accessories (Summer Linen Resort)",
+          "shopeeLink": "https://shopee.vn/search?keyword=Accessories%20Summer%20Linen%20Resort",
+          "tiktokLink": "https://shop.tiktok.com/view/product?keyword=Accessories%20Summer%20Linen%20Resort"
+        }
+      ]
+    }
+  },
+  {
+    "id": "outfit_013",
+    "name": "Athleisure Chic",
+    "category": "outfit",
+    "description": "Sporty yet stylish everyday wear combining comfort with fashion pieces.",
+    "tags": [
+      "casual",
+      "daily",
+      "sporty",
+      "inverted triangle"
+    ],
+    "primaryImage": "https://i.pinimg.com/736x/33/2f/7b/332f7b03e266df237db0ab389267a1dc.jpg",
+    "fallbackImage": "https://i.pinimg.com/736x/33/2f/7b/332f7b03e266df237db0ab389267a1dc.jpg",
+    "tutorial": {
+      "steps": [
+        {
+          "title": "Base",
+          "desc": "Wear a seamless matching sports bra and leggings set."
+        },
+        {
+          "title": "Outer",
+          "desc": "Throw on an oversized tailored blazer for a chic contrast."
+        },
+        {
+          "title": "Footwear",
+          "desc": "Finish with chunky white sneakers and a baseball cap."
+        }
+      ],
+      "products": [
+        {
+          "name": "Base (Athleisure Chic)",
+          "shopeeLink": "https://shopee.vn/search?keyword=Base%20Athleisure%20Chic",
+          "tiktokLink": "https://shop.tiktok.com/view/product?keyword=Base%20Athleisure%20Chic"
+        },
+        {
+          "name": "Outer (Athleisure Chic)",
+          "shopeeLink": "https://shopee.vn/search?keyword=Outer%20Athleisure%20Chic",
+          "tiktokLink": "https://shop.tiktok.com/view/product?keyword=Outer%20Athleisure%20Chic"
+        },
+        {
+          "name": "Footwear (Athleisure Chic)",
+          "shopeeLink": "https://shopee.vn/search?keyword=Footwear%20Athleisure%20Chic",
+          "tiktokLink": "https://shop.tiktok.com/view/product?keyword=Footwear%20Athleisure%20Chic"
+        }
+      ]
+    }
+  },
+  {
+    "id": "cl_cerave_hydrating",
+    "name": "CeraVe Hydrating Cleanser",
+    "type": "cleanser",
+    "skinType": [
+      "dry",
+      "normal",
+      "sensitive"
+    ],
+    "budget": [
+      "student",
+      "mid-range"
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=500&q=80"
+  },
+  {
+    "id": "cl_cosrx_salicylic",
+    "name": "COSRX Salicylic Acid Daily Gentle Cleanser",
+    "type": "cleanser",
+    "skinType": [
+      "oily",
+      "combination"
+    ],
+    "budget": [
+      "student"
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?w=500&q=80"
+  },
+  {
+    "id": "cl_laroche_purifying",
+    "name": "La Roche-Posay Effaclar Purifying Foaming Gel",
+    "type": "cleanser",
+    "skinType": [
+      "oily",
+      "combination"
+    ],
+    "budget": [
+      "mid-range"
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=500&q=80"
+  },
+  {
+    "id": "cl_tatcha_rice",
+    "name": "Tatcha The Rice Wash",
+    "type": "cleanser",
+    "skinType": [
+      "dry",
+      "normal",
+      "combination"
+    ],
+    "budget": [
+      "premium"
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1556228720-192a6af4e865?w=500&q=80"
+  },
+  {
+    "id": "mr_bioderma_pink",
+    "name": "Bioderma Sensibio H2O Micellar Water",
+    "type": "makeup_remover",
+    "skinType": [
+      "dry",
+      "normal",
+      "sensitive"
+    ],
+    "budget": [
+      "mid-range",
+      "premium"
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1601049541289-9b1b7bbbc246?w=500&q=80"
+  },
+  {
+    "id": "mr_garnier_micellar",
+    "name": "Garnier Micellar Cleansing Water",
+    "type": "makeup_remover",
+    "skinType": [
+      "all",
+      "oily",
+      "dry"
+    ],
+    "budget": [
+      "student"
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=500&q=80"
+  },
+  {
+    "id": "mr_shu_uemura",
+    "name": "Shu Uemura Anti/Oxi+ Cleansing Oil",
+    "type": "makeup_remover",
+    "skinType": [
+      "all",
+      "dry",
+      "combination"
+    ],
+    "budget": [
+      "premium"
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1617897903246-719242758050?w=500&q=80"
+  },
+  {
+    "id": "tn_klairs_supple",
+    "name": "Klairs Supple Preparation Facial Toner",
+    "type": "toner",
+    "skinType": [
+      "dry",
+      "normal",
+      "sensitive"
+    ],
+    "budget": [
+      "mid-range"
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1608280628286-905bb6361dd5?w=500&q=80"
+  },
+  {
+    "id": "tn_somebymi_aha",
+    "name": "Some By Mi AHA BHA PHA 30 Days Miracle Toner",
+    "type": "toner",
+    "skinType": [
+      "oily",
+      "combination"
+    ],
+    "budget": [
+      "student"
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1615397323048-c8d50f5d54a2?w=500&q=80"
+  },
+  {
+    "id": "tn_sk2_essence",
+    "name": "SK-II Facial Treatment Essence",
+    "type": "toner",
+    "skinType": [
+      "all",
+      "dry",
+      "oily"
+    ],
+    "budget": [
+      "premium"
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=500&q=80"
+  },
+  {
+    "id": "sr_ordinary_niacinamide",
+    "name": "The Ordinary Niacinamide 10% + Zinc 1%",
+    "type": "serum",
+    "skinType": [
+      "oily",
+      "combination",
+      "normal"
+    ],
+    "budget": [
+      "student"
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=500&q=80"
+  },
+  {
+    "id": "sr_laroche_b5",
+    "name": "La Roche-Posay Hyalu B5 Pure Hyaluronic Acid",
+    "type": "serum",
+    "skinType": [
+      "dry",
+      "normal",
+      "sensitive"
+    ],
+    "budget": [
+      "mid-range"
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1617897903246-719242758050?w=500&q=80"
+  },
+  {
+    "id": "sr_estee_anr",
+    "name": "Estée Lauder Advanced Night Repair",
+    "type": "serum",
+    "skinType": [
+      "all"
+    ],
+    "budget": [
+      "premium"
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1615397323048-c8d50f5d54a2?w=500&q=80"
+  },
+  {
+    "id": "mz_illiyoon_ceramide",
+    "name": "Illiyoon Ceramide Ato Concentrate Cream",
+    "type": "moisturizer",
+    "skinType": [
+      "dry",
+      "normal",
+      "sensitive"
+    ],
+    "budget": [
+      "student"
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1556228720-192a6af4e865?w=500&q=80"
+  },
+  {
+    "id": "mz_neutrogena_hydro",
+    "name": "Neutrogena Hydro Boost Water Gel",
+    "type": "moisturizer",
+    "skinType": [
+      "oily",
+      "combination"
+    ],
+    "budget": [
+      "student",
+      "mid-range"
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1601049541289-9b1b7bbbc246?w=500&q=80"
+  },
+  {
+    "id": "mz_kiehls_ultra",
+    "name": "Kiehl's Ultra Facial Cream",
+    "type": "moisturizer",
+    "skinType": [
+      "dry",
+      "normal",
+      "combination"
+    ],
+    "budget": [
+      "premium"
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=500&q=80"
+  },
+  {
+    "id": "ss_biore_aqua",
+    "name": "Bioré UV Aqua Rich Watery Essence",
+    "type": "sunscreen",
+    "skinType": [
+      "oily",
+      "combination",
+      "normal"
+    ],
+    "budget": [
+      "student"
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1608280628286-905bb6361dd5?w=500&q=80"
+  },
+  {
+    "id": "ss_laroche_anthelios",
+    "name": "La Roche-Posay Anthelios Invisible Fluid",
+    "type": "sunscreen",
+    "skinType": [
+      "all",
+      "sensitive"
+    ],
+    "budget": [
+      "mid-range"
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?w=500&q=80"
+  },
+  {
+    "id": "ss_shiseido_urban",
+    "name": "Shiseido Urban Environment Sunscreen",
+    "type": "sunscreen",
+    "skinType": [
+      "all"
+    ],
+    "budget": [
+      "premium"
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1617897903246-719242758050?w=500&q=80"
+  },
+  {
+    "id": "skincare_009",
+    "name": "Niacinamide Brightening Serum",
+    "category": "skincare",
+    "description": "Fades dark spots and balances sebum production for a radiant complexion.",
+    "tags": [
+      "serum",
+      "brightening",
+      "oily",
+      "acne-prone"
+    ],
+    "skinType": [
+      "oily",
+      "combination",
+      "acne-prone"
+    ],
+    "budget": [
+      "affordable",
+      "mid-range"
+    ],
+    "primaryImage": "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?w=800",
+    "fallbackImage": "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?w=800"
+  },
+  {
+    "id": "skincare_010",
+    "name": "Centella Asiatica Soothing Toner",
+    "category": "skincare",
+    "description": "Calms redness, reduces inflammation, and hydrates irritated skin instantly.",
+    "tags": [
+      "toner",
+      "soothing",
+      "sensitive",
+      "redness"
+    ],
+    "skinType": [
+      "sensitive",
+      "dry",
+      "all"
+    ],
+    "budget": [
+      "affordable"
+    ],
+    "primaryImage": "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=800",
+    "fallbackImage": "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=800"
+  },
+  {
+    "id": "skincare_011",
+    "name": "Peptide Firming Eye Cream",
+    "category": "skincare",
+    "description": "Targets fine lines, crow's feet, and loss of firmness around the delicate eye area.",
+    "tags": [
+      "eye cream",
+      "anti-aging",
+      "firming"
+    ],
+    "skinType": [
+      "mature",
+      "dry",
+      "all"
+    ],
+    "budget": [
+      "high-end",
+      "mid-range"
+    ],
+    "primaryImage": "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=800",
+    "fallbackImage": "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=800"
+  },
+  {
+    "id": "skincare_012",
+    "name": "AHA/BHA Exfoliating Peeling Solution",
+    "category": "skincare",
+    "description": "A 10-minute weekly treatment to deeply exfoliate pores and resurface skin texture.",
+    "tags": [
+      "exfoliator",
+      "chemical peel",
+      "acne-prone"
+    ],
+    "skinType": [
+      "oily",
+      "combination",
+      "normal"
+    ],
+    "budget": [
+      "affordable"
+    ],
+    "primaryImage": "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=800",
+    "fallbackImage": "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=800"
+  },
+  {
+    "id": "skincare_013",
+    "name": "Ceramide Barrier Repair Cream",
+    "category": "skincare",
+    "description": "A thick, deeply nourishing cream that restores a damaged skin barrier and prevents moisture loss.",
+    "tags": [
+      "moisturizer",
+      "barrier repair",
+      "dry skin"
+    ],
+    "skinType": [
+      "dry",
+      "sensitive",
+      "eczema"
+    ],
+    "budget": [
+      "mid-range",
+      "affordable"
+    ],
+    "primaryImage": "https://images.unsplash.com/photo-1556228720-192a613d33bd?w=800",
+    "fallbackImage": "https://images.unsplash.com/photo-1556228720-192a613d33bd?w=800"
   }
 ];
-
-// We keep the old getTutorial logic
-function getTutorial(id) {
-    return CONTENT_DATABASE.find(item => item.id === id);
-}
-
-// Ensure it works in browser
-if (typeof module !== 'undefined') {
-    module.exports = CONTENT_DATABASE;
-}
