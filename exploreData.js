@@ -5,6 +5,7 @@ const EXPLORE_DATA = [
     description: "Soft waves + minimal makeup + comfortable minimalist outfit.",
     tags: ["Everyday", "Casual"],
     lookImageText: "SOFT DAY",
+    imageUrl: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&q=80",
     components: {
       hair: {
         id: "hair_002",
@@ -34,6 +35,7 @@ const EXPLORE_DATA = [
     description: "Sleek straight hair + soft glam makeup + structured outfit.",
     tags: ["Presentation", "Work"],
     lookImageText: "SMART",
+    imageUrl: "https://images.unsplash.com/photo-1542596594-649edbc13630?w=500&q=80",
     components: {
       hair: {
         id: "hair_004",
@@ -63,6 +65,7 @@ const EXPLORE_DATA = [
     description: "Messy bun + clean girl makeup + casual streetwear.",
     tags: ["Weekend", "Easy"],
     lookImageText: "WEEKEND",
+    imageUrl: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=500&q=80",
     components: {
       hair: {
         id: "hair_006",
@@ -92,6 +95,7 @@ const EXPLORE_DATA = [
     description: "Voluminous waves + alluring makeup + feminine floral dress.",
     tags: ["Date", "Elegant"],
     lookImageText: "DATE NIGHT",
+    imageUrl: "https://i.pinimg.com/736x/f6/cb/0e/f6cb0e9dcda5f7fdf0ab0c4ff4334be4.jpg",
     components: {
       hair: {
         id: "hair_005",
@@ -121,6 +125,7 @@ const EXPLORE_DATA = [
     description: "Hippie curls + matte latte makeup + retro 90s outfit.",
     tags: ["Retro", "Edgy"],
     lookImageText: "VINTAGE",
+    imageUrl: "https://i.pinimg.com/736x/87/42/fa/8742fada5f2f5ff50b868e42f9fb84db.jpg",
     components: {
       hair: {
         id: "hair_008",
@@ -150,6 +155,7 @@ const EXPLORE_DATA = [
     description: "Butterfly cut + peach makeup + trendy Y2K style.",
     tags: ["Trendy", "Y2K"],
     lookImageText: "IDOL Y2K",
+    imageUrl: "https://i.pinimg.com/736x/9f/c6/35/9fc635de74f9d45e7f1dc1c2a12ff328.jpg",
     components: {
       hair: {
         id: "hair_007",

@@ -69,7 +69,12 @@ document.addEventListener('DOMContentLoaded', () => {
     
     document.getElementById('ed-title').textContent = data.title;
     const imgBox = document.getElementById('ed-image');
-    imgBox.textContent = data.lookImageText;
+    if (data.imageUrl) {
+        imgBox.style.background = "url('" + data.imageUrl + "') center/cover";
+        imgBox.textContent = "";
+    } else {
+        imgBox.textContent = data.lookImageText;
+    }
     
     document.getElementById('ed-hair-desc').innerHTML = '<b>' + data.components.hair.name + '</b> · ' + data.components.hair.desc;
     const hairLink = document.getElementById('ed-hair-link');
