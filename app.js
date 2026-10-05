@@ -469,28 +469,101 @@ function renderSurveyCard(item) {
 // ==========================================
 // WARDROBE LOGIC
 // ==========================================
-let wardrobeFiles = [];
+
+// ==========================================
+// WARDROBE LOGIC
+// ==========================================
+let wardrobeFiles = []; // Store file objects
 
 window.previewWardrobe = function(input) {
     if (input.files && input.files.length > 0) {
-        const previewBox = document.getElementById('wardrobePreview');
-        previewBox.innerHTML = '';
-        wardrobeFiles = Array.from(input.files).slice(0, 10); // max 10
+        const newFiles = Array.from(input.files);
+        
+        // Prevent exceeding 10 files
+        if (wardrobeFiles.length + newFiles.length > 10) {
+            alert('You can only upload up to 10 items in total.');
+            const allowed = 10 - wardrobeFiles.length;
+            wardrobeFiles = wardrobeFiles.concat(newFiles.slice(0, allowed));
+        } else {
+            wardrobeFiles = wardrobeFiles.concat(newFiles);
+        }
 
-        wardrobeFiles.forEach((file) => {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                const img = document.createElement('img');
-                img.src = e.target.result;
-                img.style.maxHeight = '100px';
-                img.style.borderRadius = '8px';
-                img.style.objectFit = 'cover';
-                previewBox.appendChild(img);
-            };
-            reader.readAsDataURL(file);
-        });
+        renderWardrobePreview();
+        input.value = ""; // Reset input so the same files can be selected again if needed
     }
 };
+
+window.removeWardrobeItem = function(index, event) {
+    if (event) event.stopPropagation();
+    wardrobeFiles.splice(index, 1);
+    renderWardrobePreview();
+};
+
+function renderWardrobePreview() {
+    const previewBox = document.getElementById('wardrobePreview');
+    const emptyState = document.getElementById('wardrobeEmptyState');
+    const previewState = document.getElementById('wardrobePreviewState');
+    const countText = document.getElementById('wardrobeCount');
+    
+    if (wardrobeFiles.length === 0) {
+        emptyState.style.display = 'block';
+        previewState.style.display = 'none';
+        previewBox.innerHTML = '';
+        return;
+    }
+    
+    emptyState.style.display = 'none';
+    previewState.style.display = 'block';
+    countText.innerText = `${wardrobeFiles.length} / 10 items`;
+    
+    previewBox.innerHTML = '';
+    
+    wardrobeFiles.forEach((file, index) => {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            const div = document.createElement('div');
+            div.style.position = 'relative';
+            div.style.width = '80px';
+            div.style.height = '80px';
+            
+            const img = document.createElement('img');
+            img.src = e.target.result;
+            img.style.width = '100%';
+            img.style.height = '100%';
+            img.style.borderRadius = '8px';
+            img.style.objectFit = 'cover';
+            img.dataset.index = index; // Store index for later UI mapping
+            
+            const removeBtn = document.createElement('button');
+            removeBtn.innerHTML = '✕';
+            removeBtn.className = 'remove-btn';
+            removeBtn.style.position = 'absolute';
+            removeBtn.style.top = '-5px';
+            removeBtn.style.right = '-5px';
+            removeBtn.style.background = 'black';
+            removeBtn.style.color = 'white';
+            removeBtn.style.border = 'none';
+            removeBtn.style.borderRadius = '50%';
+            removeBtn.style.width = '20px';
+            removeBtn.style.height = '20px';
+            removeBtn.style.fontSize = '12px';
+            removeBtn.style.cursor = 'pointer';
+            removeBtn.style.display = 'flex';
+            removeBtn.style.alignItems = 'center';
+            removeBtn.style.justifyContent = 'center';
+            removeBtn.onclick = (e) => window.removeWardrobeItem(index, e);
+            
+            div.appendChild(img);
+            div.appendChild(removeBtn);
+            previewBox.appendChild(div);
+            
+            // Store base64 representation on the file object for easy mapping later
+            file.base64Preview = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    });
+}
+
 
 window.analyzeWardrobe = async function() {
     if (wardrobeFiles.length === 0) {
@@ -504,37 +577,61 @@ window.analyzeWardrobe = async function() {
         resultsArea.innerHTML = `
             <div style="text-align: center; padding: 50px 0;">
               <div class="spinner"></div>
-              <h3 style="margin-top: 20px;">LUMI is matching your clothes...</h3>
+              <h3 id="wardrobeStatusText" style="margin-top: 20px;">Analyzing your wardrobe & matching outfits...</h3>
             </div>
         `;
         resultsArea.scrollIntoView({behavior: 'smooth', block: 'start'});
     }
 
-    // Fetch from data.js
-    setTimeout(() => {
-        if (resultsArea) {
-            let html = `
-                <div class="section-title">
-                    <div><div class="eyebrow">Results</div><h2>Your Mix & Match Outfits</h2></div>
-                </div>
-                <div class="grid grid-3">
-            `;
-            
-            if (typeof CONTENT_DATABASE !== 'undefined') {
-                const outfits = CONTENT_DATABASE
-                    .filter(i => i.id && i.id.startsWith('outfit_'))
-                    .map(i => ({ ...i, category: 'outfit' }));
-                // pick 3 random outfits
-                const shuffled = outfits.sort(() => 0.5 - Math.random());
-                const selected = shuffled.slice(0, 3);
-                
-                html += selected.map(renderSurveyCard).join('');
-            } else {
-                html += `<p>Error: Could not load outfit database.</p>`;
-            }
-            
-            html += `</div><p style="text-align:center; margin-top:20px; color:#666;">(Note: This is a simulated wardrobe generation using your outfit database.)</p>`;
-            resultsArea.innerHTML = html;
+    try {
+        const formData = new FormData();
+        wardrobeFiles.forEach(file => {
+            formData.append('images', file);
+        });
+
+        const res = await fetch(`${BACKEND_URL}/api/analyze/wardrobe-db`, {
+            method: 'POST',
+            body: formData
+        });
+
+        if (!res.ok) throw new Error("Failed to match outfits.");
+        const data = await res.json();
+        
+        const recommendations = data.recommendations;
+        if (!recommendations || recommendations.length === 0) {
+            throw new Error("Unable to match any outfits from our database. Please try different items.");
         }
-    }, 2500);
+
+        // Render Outfits using renderSurveyCard (just like body analysis)
+        let html = `
+            <div class="section-title">
+                <div><div class="eyebrow">Results</div><h2>Your DB Mix & Match Outfits</h2></div>
+            </div>
+            <div class="grid grid-3">
+        `;
+        
+        // Ensure category is set for routing correctly
+        const itemsToRender = recommendations.map(item => ({ ...item, category: 'outfit' }));
+        html += itemsToRender.map(renderSurveyCard).join('');
+        html += `</div>`;
+        
+        resultsArea.innerHTML = html;
+
+        // Save for tutorial.html usage if needed (optional for outfit, but good practice)
+        const savedStr = localStorage.getItem('lumi_last_results');
+        let savedData = savedStr ? JSON.parse(savedStr) : {};
+        savedData.outfit = itemsToRender;
+        localStorage.setItem('lumi_last_results', JSON.stringify(savedData));
+
+    } catch (error) {
+        console.error(error);
+        if (resultsArea) {
+            resultsArea.innerHTML = `
+                <div style="text-align: center; padding: 50px 0;">
+                    <h3 style="color: red; margin-bottom: 15px;">${error.message || "Unable to match outfits. Please try again."}</h3>
+                    <button class="btn" onclick="analyzeWardrobe()">Try Again</button>
+                </div>
+            `;
+        }
+    }
 };
