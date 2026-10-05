@@ -1,24 +1,77 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>LUMI Explore</title><link rel="stylesheet" href="styles.css"></head><body>
-<nav class="nav"><a class="logo" href="index.html">LUMI</a><div class="navlinks"><a href="index.html">Home</a><a href="hair.html">Hair</a><a href="face.html">Face</a><a href="outfit.html">Outfit</a><a class="active" href="explore.html">Explore</a></div></nav>
-<main class="container"><div class="eyebrow">Explore</div><h1>Bring everything together.</h1><p>Explore uses the profile you build across LUMI to create complete looks: outfit + hair + makeup + finishing details.</p>
-<div class="notice">Connect your Body profile and explore the Hair, Makeup and Skincare spaces first for more personalized recommendations.</div>
-<div class="section-title"><div><div class="eyebrow">For you</div><h2>Complete looks</h2></div></div>
-<div class="grid grid-3"><a class="result card" href="explore-detail.html?look=soft"><div class="look-img" style="background: url('https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&q=80') center/cover;"></div><h3>Soft Day</h3><p>Soft waves + natural glow + relaxed feminine outfit.</p><span class="tag">Campus</span><span class="tag">Daytime</span></a>
-<a class="result card" href="explore-detail.html?look=smart"><div class="look-img" style="background: url('https://images.unsplash.com/photo-1542596594-649edbc13630?w=500&q=80') center/cover;"></div><h3>Smart & Polished</h3><p>Low ponytail + defined makeup + structured outfit.</p><span class="tag">Presentation</span><span class="tag">Work</span></a>
-<a class="result card" href="explore-detail.html?look=weekend"><div class="look-img" style="background: url('https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=500&q=80') center/cover;"></div><h3>Weekend Glow</h3><p>Easy hair + fresh makeup + casual wardrobe combination.</p><span class="tag">Weekend</span><span class="tag">Easy</span></a></div>
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>LUMI Explore</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="exploreData.js"></script>
+  <script src="app.js"></script>
+</head>
+<body>
+<nav class="nav">
+  <a class="logo" href="index.html">LUMI</a>
+  <div class="navlinks">
+    <a href="index.html">Home</a>
+    <a href="hair.html">Hair</a>
+    <a href="face.html">Face</a>
+    <a href="outfit.html">Outfit</a>
+    <a class="active" href="explore.html">Explore</a>
+  </div>
+</nav>
 
-<div class="section-title" style="margin-top: 60px;"><div><div class="eyebrow">About the Creator</div><h2>Founder & Stylist</h2></div></div>
-<div class="panel" style="display: flex; gap: 30px; align-items: center; flex-wrap: wrap;">
-  <div style="width: 150px; height: 150px; border-radius: 50%; background: url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&q=80') center/cover; flex-shrink: 0;"></div>
-  <div>
-    <h3 style="margin-bottom: 10px;">Vũ Trịnh Minh Thi</h3>
-    <p>Founder & Creator of LUMI. Passionate about empowering individuals through personalized beauty and style recommendations. LUMI is built to make professional styling accessible to everyone via AI.</p>
-    <div style="margin-top: 15px;">
-      <a href="#" class="btn secondary" style="padding: 5px 15px; font-size: 14px;">Facebook</a>
-      <a href="#" class="btn secondary" style="padding: 5px 15px; font-size: 14px; margin-left: 10px;">Instagram</a>
-      <a href="#" class="btn secondary" style="padding: 5px 15px; font-size: 14px; margin-left: 10px;">LinkedIn</a>
+<main class="container">
+  <div class="eyebrow">Explore</div>
+  <h1>Bring everything together.</h1>
+  <p>Explore uses the profile you build across LUMI to create complete looks: outfit + hair + makeup + finishing details.</p>
+  
+  <div class="notice">Connect your Body profile and explore the Hair, Makeup and Skincare spaces first for more personalized recommendations.</div>
+  
+  <div class="section-title">
+    <div>
+      <div class="eyebrow">For you</div>
+      <h2>Complete looks</h2>
     </div>
   </div>
-</div>
+  
+  <div class="grid grid-3" id="explore-grid">
+    <!-- Content injected via JS -->
+  </div>
+  
+  <div class="section-title" style="margin-top: 60px;">
+    <div>
+      <div class="eyebrow">About the Creator</div>
+      <h2>Founder & Stylist</h2>
+    </div>
+  </div>
+  <div class="panel" style="display: flex; gap: 30px; align-items: center; flex-wrap: wrap;">
+    <div style="width: 150px; height: 150px; border-radius: 50%; background: url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&q=80') center/cover; flex-shrink: 0;"></div>
+    <div>
+      <h3 style="margin-bottom: 10px;">Vũ Trịnh Minh Thi</h3>
+      <p>Founder & Creator of LUMI. Passionate about empowering individuals through personalized beauty and style recommendations. LUMI is built to make professional styling accessible to everyone via AI.</p>
+      <div style="margin-top: 15px;">
+        <a href="#" class="btn secondary" style="padding: 5px 15px; font-size: 14px;">Facebook</a>
+        <a href="#" class="btn secondary" style="padding: 5px 15px; font-size: 14px; margin-left: 10px;">Instagram</a>
+        <a href="#" class="btn secondary" style="padding: 5px 15px; font-size: 14px; margin-left: 10px;">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</main>
 
-</main></body></html>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const grid = document.getElementById('explore-grid');
+    if (!grid) return;
+    
+    grid.innerHTML = EXPLORE_DATA.map(item => 
+        '<a class="result card" href="explore-detail.html?look=' + item.id + '">' +
+            '<div class="look-img">' + (item.lookImageText || item.title) + '</div>' +
+            '<h3>' + item.title + '</h3>' +
+            '<p>' + item.description + '</p>' +
+            item.tags.map(tag => '<span class="tag">' + tag + '</span>').join('') +
+        '</a>'
+    ).join('');
+});
+</script>
+</body>
+</html>
