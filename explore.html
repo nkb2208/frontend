@@ -45,7 +45,7 @@
     </div>
   </div>
   <div class="panel" style="display: flex; gap: 30px; align-items: center; flex-wrap: wrap;">
-    <img src="./assets/vtmt1.jpg" style="width: 150px; height: 150px; border-radius: 50%; background:  center/cover; flex-shrink: 0;"/>
+    <img src="./assets/vtmt1.jpg" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; object-position: center; flex-shrink: 0; box-shadow: 0 4px 10px rgba(0,0,0,0.1);"/>
     <div>
       <h3 style="margin-bottom: 10px;">Vũ Trịnh Minh Thi</h3>
       <p>Founder & Creator of LUMI. Passionate about empowering individuals through personalized beauty and style recommendations. LUMI is built to make professional styling accessible to everyone via AI.</p>
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
     grid.innerHTML = EXPLORE_DATA.map(item => 
         '<a class="result card" href="explore-detail.html?look=' + item.id + '">' +
             '<div class="look-img">' + (item.lookImageText || item.title) + '</div>' +
-            '<h3>' + item.title + '</h3>' +
+            '<h3 style= "margin-top:15px">' + item.title + '</h3>' +
             '<p>' + item.description + '</p>' +
             item.tags.map(tag => '<span class="tag">' + tag + '</span>').join('') +
         '</a>'

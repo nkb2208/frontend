@@ -333,20 +333,28 @@ function initTutorial() {
         console.log('Rendering products for', cat, data.tutorial.products);
         if (data.tutorial && data.tutorial.products && data.tutorial.products.length > 0) {
             productsPanel.style.display = 'block';
-            productsContainer.innerHTML = data.tutorial.products.map(p => `
-                <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #eee; padding:15px 0;">
+            productsContainer.innerHTML = data.tutorial.products.map(p => {
+                let links = '';
+                if (p.shopeeLink) links += `<a href="${p.shopeeLink}" target="_blank" class="btn secondary" style="padding:8px 15px; font-size:14px; text-decoration:none; background:#ee4d2d; color:white; border:none; margin-left: 5px;">Shopee</a>`;
+                if (p.tiktokLink) links += `<a href="${p.tiktokLink}" target="_blank" class="btn secondary" style="padding:8px 15px; font-size:14px; text-decoration:none; background:#000000; color:white; border:none; margin-left: 5px;">TikTok</a>`;
+                if (p.purchaseLink) links += `<a href="${p.purchaseLink}" target="_blank" class="btn secondary" style="padding:8px 15px; font-size:14px; text-decoration:none; margin-left: 5px;">Mua ngay 👉</a>`;
+                
+                return `
+                <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #eee; padding:15px 0; flex-wrap: wrap; gap: 10px;">
                     <div style="display:flex; align-items:center; gap: 10px;">
                         <span style="font-size:20px;">🛍️</span>
                         <span style="font-weight:600; font-size:16px;">${p.name}</span>
                     </div>
-                    <a href="${p.purchaseLink}" target="_blank" class="btn secondary" style="padding:8px 20px; font-size:14px; text-decoration:none;">Mua ngay ↗</a>
+                    <div style="display:flex;">
+                        ${links}
+                    </div>
                 </div>
-            `).join('');
+            `;
+            }).join('');
         } else {
             productsPanel.style.display = 'none';
         }
-    }
-}
+    }}
 
 // ==========================================
 // MANUAL SURVEY LOGIC (For hair.html, etc.)
