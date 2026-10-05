@@ -5,7 +5,7 @@ const EXPLORE_DATA = [
     description: "Soft waves + minimal makeup + comfortable minimalist outfit.",
     tags: ["Everyday", "Casual"],
     lookImageText: "SOFT DAY",
-    imageUrl: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&q=80",
+    imageUrl: "https://i.pinimg.com/736x/da/93/ee/da93ee53682c86632d1aa8f34063a213.jpg",
     components: {
       hair: {
         id: "hair_002",
@@ -35,7 +35,7 @@ const EXPLORE_DATA = [
     description: "Sleek straight hair + soft glam makeup + structured outfit.",
     tags: ["Presentation", "Work"],
     lookImageText: "SMART",
-    imageUrl: "https://images.unsplash.com/photo-1542596594-649edbc13630?w=500&q=80",
+    imageUrl: "https://i.pinimg.com/1200x/b8/55/6b/b8556bd767a54d69aaa1c80acd939837.jpg",
     components: {
       hair: {
         id: "hair_004",
@@ -65,7 +65,7 @@ const EXPLORE_DATA = [
     description: "Messy bun + clean girl makeup + casual streetwear.",
     tags: ["Weekend", "Easy"],
     lookImageText: "WEEKEND",
-    imageUrl: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=500&q=80",
+    imageUrl: "https://i.pinimg.com/736x/72/74/d3/7274d37a6a8cd03d9def7080a7238ce8.jpg",
     components: {
       hair: {
         id: "hair_006",
@@ -95,7 +95,7 @@ const EXPLORE_DATA = [
     description: "Voluminous waves + alluring makeup + feminine floral dress.",
     tags: ["Date", "Elegant"],
     lookImageText: "DATE NIGHT",
-    imageUrl: "https://i.pinimg.com/736x/f6/cb/0e/f6cb0e9dcda5f7fdf0ab0c4ff4334be4.jpg",
+    imageUrl: "https://i.pinimg.com/736x/4e/8a/ad/4e8aadf4ac3dfb1072dc92c2db08f2bb.jpg",
     components: {
       hair: {
         id: "hair_005",
@@ -125,7 +125,7 @@ const EXPLORE_DATA = [
     description: "Hippie curls + matte latte makeup + retro 90s outfit.",
     tags: ["Retro", "Edgy"],
     lookImageText: "VINTAGE",
-    imageUrl: "https://i.pinimg.com/736x/87/42/fa/8742fada5f2f5ff50b868e42f9fb84db.jpg",
+    imageUrl: "https://i.pinimg.com/736x/4e/b0/35/4eb035367b3a3086b3a48dd847e91ab4.jpg",
     components: {
       hair: {
         id: "hair_008",
@@ -155,7 +155,7 @@ const EXPLORE_DATA = [
     description: "Butterfly cut + peach makeup + trendy Y2K style.",
     tags: ["Trendy", "Y2K"],
     lookImageText: "IDOL Y2K",
-    imageUrl: "https://i.pinimg.com/736x/9f/c6/35/9fc635de74f9d45e7f1dc1c2a12ff328.jpg",
+    imageUrl: "https://i.pinimg.com/736x/d1/fe/6f/d1fe6fd83ac99e7c1f7bb5edd478133a.jpg",
     components: {
       hair: {
         id: "hair_007",
